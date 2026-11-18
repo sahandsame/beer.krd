@@ -1,0 +1,97 @@
+/*
+ * Beer Agency design tokens (Tailwind v4). Import after "tailwindcss" in each app:
+ *   @import "tailwindcss";
+ *   @import "@beer/ui/styles.css";
+ *   @source "../../../packages/ui/src";
+ */
+@theme {
+  /* Brand, sampled from the logo */
+  --color-forest: #06332e;
+  --color-forest-deep: #042621;
+  --color-ink: #081d18;
+  --color-lime: #c6db62;
+  --color-lime-soft: #dceb9c;
+  --color-paper: #fafffe;
+
+  /* UI surfaces derived from the brand green */
+  --color-surface: #0a3c36;
+  --color-surface-2: #0f4840;
+  --color-line: rgb(250 255 254 / 0.12);
+  --color-line-strong: rgb(250 255 254 / 0.24);
+  --color-mist: #a9c4bd;
+  --color-danger: #ff8f7d;
+  --color-warning: #f2c46d;
+
+  --font-sans: var(--font-display), var(--font-arabic), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-code), ui-monospace, "Cascadia Mono", Consolas, monospace;
+
+  --shadow-long: 18px 18px 0 -2px rgb(8 29 24 / 0.55), 36px 36px 60px -10px rgb(8 29 24 / 0.6);
+
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-bar: bar-grow 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes bar-grow {
+    from {
+      transform: scaleY(0);
+    }
+    to {
+      transform: scaleY(1);
+    }
+  }
+}
+
+/* Arabic-script locales put the Arabic face first so Latin fallbacks don't win. */
+:lang(ckb),
+:lang(ar) {
+  --font-sans: var(--font-arabic), var(--font-display), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    background: var(--color-forest);
+    color: var(--color-paper);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-lime);
+    color: var(--color-ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-lime);
+    outline-offset: 3px;
+  }
+  /* Arabic script needs more line height than Latin. */
+  :lang(ckb) p,
+  :lang(ar) p {
+    line-height: 1.9;
+  }
+}
+
+.barcode-bar {
+  transform-origin: bottom;
+  animation: var(--animate-bar);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

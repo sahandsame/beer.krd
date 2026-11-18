@@ -1,0 +1,26 @@
+{
+  "name": "beer-krd",
+  "private": true,
+  "packageManager": "pnpm@12.18.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "test:e2e": "pnpm --filter @beer/e2e e2e",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "db:dev": "pnpm --filter @beer/db db:dev",
+    "db:generate": "pnpm --filter @beer/db db:generate",
+    "db:migrate": "pnpm --filter @beer/db db:migrate",
+    "db:seed": "pnpm --filter @beer/db db:seed"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.6.6",
+    "turbo": "2.11.11",
+    "typescript": "5.9.3"
+  }
+}

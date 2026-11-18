@@ -1,0 +1,127 @@
+{
+  "meta": { "siteName": "Beer Agency" },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "work": "Work",
+    "about": "About",
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Close menu",
+    "language": "Language",
+    "skip": "Skip to content"
+  },
+  "common": {
+    "learnMore": "Learn more",
+    "viewAll": "View all",
+    "backToServices": "All services",
+    "backToWork": "All work",
+    "startProject": "Start a project",
+    "callUs": "Call us",
+    "whatsapp": "WhatsApp",
+    "viber": "Viber",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "email": "Email",
+    "phone": "Phone",
+    "location": "Location",
+    "followUs": "Follow us"
+  },
+  "home": {
+    "servicesEyebrow": "What we do",
+    "servicesTitle": "Five disciplines. One way of thinking.",
+    "workEyebrow": "Selected work",
+    "workTitle": "Ideas we've brought to life",
+    "processEyebrow": "Our process",
+    "scroll": "Scroll"
+  },
+  "services": {
+    "eyebrow": "Services",
+    "title": "Everything your brand needs, under one roof",
+    "lead": "Strategy, design, technology and media — planned together so every piece works with the others.",
+    "deliverables": "What's included",
+    "otherServices": "Other services",
+    "ctaTitle": "Need {service}?",
+    "ctaBody": "Tell us about your project and we'll get back to you within 24 hours."
+  },
+  "work": {
+    "eyebrow": "Work",
+    "title": "Our work",
+    "lead": "A selection of projects we're proud of.",
+    "all": "All",
+    "empty": "New case studies are on the way.",
+    "client": "Client",
+    "year": "Year",
+    "services": "Services",
+    "challenge": "The challenge",
+    "approach": "Our approach",
+    "results": "Results",
+    "gallery": "Gallery",
+    "videos": "Videos"
+  },
+  "about": {
+    "eyebrow": "About",
+    "team": "The team"
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "direct": "Reach us directly",
+    "form": {
+      "name": "Your name",
+      "phone": "Phone number",
+      "email": "Email",
+      "optional": "optional",
+      "service": "What do you need?",
+      "servicePlaceholder": "Choose a service",
+      "serviceOther": "Something else",
+      "budget": "Budget",
+      "budgetPlaceholder": "Choose a range",
+      "message": "Tell us about your project",
+      "messagePlaceholder": "What are you trying to achieve? Any deadlines?",
+      "submit": "Send message",
+      "sending": "Sending…"
+    },
+    "budgets": {
+      "lt500": "Under $500",
+      "500-2000": "$500 – $2,000",
+      "2000-5000": "$2,000 – $5,000",
+      "gt5000": "Over $5,000",
+      "unsure": "Not sure yet"
+    },
+    "errors": {
+      "nameRequired": "Please enter your name.",
+      "phoneInvalid": "Please enter a valid phone number.",
+      "emailInvalid": "Please enter a valid email address.",
+      "messageTooShort": "Please tell us a little more (at least 10 characters).",
+      "rateLimited": "Too many messages. Please try again in a few minutes.",
+      "generic": "Something went wrong. Please try again or call us."
+    },
+    "success": {
+      "title": "Thank you!",
+      "body": "We've received your message and will get back to you within 24 hours.",
+      "again": "Send another message"
+    },
+    "privacyNote": "We only use your details to reply to you. See our privacy policy."
+  },
+  "privacy": {
+    "title": "Privacy policy",
+    "updated": "Last updated: November 2026",
+    "paragraphs": [
+      "This policy explains what information Beer Agency collects through beer.krd and how we use it.",
+      "When you send the contact form we collect your name, phone number, optional email address, the service you're interested in, your budget range and your message. We use this only to reply to you and to discuss your project.",
+      "Your information is stored on our own server and is only accessible to Beer Agency staff. We never sell or share it with third parties for advertising.",
+      "We use privacy-friendly analytics that do not use cookies or track you across websites.",
+      "To see, correct or delete the information we hold about you, contact us using the details on our contact page."
+    ]
+  },
+  "footer": {
+    "tagline": "For those who think deeply.",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy"
+  },
+  "notFound": {
+    "title": "This page got lost in thought.",
+    "body": "We couldn't find the page you're looking for.",
+    "home": "Back to home"
+  }
+}

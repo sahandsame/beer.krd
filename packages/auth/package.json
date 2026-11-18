@@ -1,0 +1,28 @@
+{
+  "name": "@beer/auth",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/server.ts",
+    "./client": "./src/client.ts",
+    "./roles": "./src/roles.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p .",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@beer/db": "workspace:*",
+    "@beer/validators": "workspace:*",
+    "better-auth": "1.7.21",
+    "drizzle-orm": "0.45.4"
+  },
+  "devDependencies": {
+    "@beer/config": "workspace:*",
+    "@types/node": "24.10.1",
+    "typescript": "5.9.3",
+    "vitest": "5.1.0",
+    "embedded-postgres": "18.6.0-beta.19"
+  }
+}

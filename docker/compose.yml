@@ -1,0 +1,81 @@
+# Production stack for beer.krd. On the VPS (from the repo checkout, e.g. /opt/beer-krd):
+#   cp docker/.env.production.example .env   # then fill it in
+#   docker compose -f docker/compose.yml --env-file .env up -d
+name: beer-krd
+
+x-app: &app
+  restart: unless-stopped
+  env_file: ../.env
+  depends_on:
+    migrate:
+      condition: service_completed_successfully
+
+services:
+  caddy:
+    image: caddy:2.10-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      ACME_EMAIL: ${ACME_EMAIL}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on: [web, admin]
+
+  postgres:
+    image: postgres:18-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-beer}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB:-beer}
+    volumes:
+      - pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    # Not published to the host: only reachable inside the compose network.
+  # Applies migrations and the idempotent seed, then exits. Apps start after it succeeds.
+  migrate:
+    image: ${IMAGE_PREFIX:-ghcr.io/owner/beer-krd}-tools:${TAG:-latest}
+    env_file: ../.env
+    restart: "no"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  web:
+    <<: *app
+    image: ${IMAGE_PREFIX:-ghcr.io/owner/beer-krd}-web:${TAG:-latest}
+    environment:
+      PORT: "3000"
+      UPLOADS_DIR: /data/uploads
+    volumes:
+      - uploads:/data/uploads:ro
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  admin:
+    <<: *app
+    image: ${IMAGE_PREFIX:-ghcr.io/owner/beer-krd}-admin:${TAG:-latest}
+    environment:
+      PORT: "3100"
+      UPLOADS_DIR: /data/uploads
+      INTERNAL_WEB_URL: http://web:3000
+    volumes:
+      - uploads:/data/uploads
+
+volumes:
+  pgdata:
+  uploads:
+  caddy_data:
+  caddy_config:

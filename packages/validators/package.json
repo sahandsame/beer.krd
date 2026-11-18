@@ -1,0 +1,22 @@
+{
+  "name": "@beer/validators",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p .",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@beer/i18n": "workspace:*",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@beer/config": "workspace:*",
+    "typescript": "5.9.3",
+    "vitest": "5.1.0"
+  }
+}

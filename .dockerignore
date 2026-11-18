@@ -1,0 +1,12 @@
+**/node_modules
+**/.next
+**/.turbo
+**/dist
+.data
+.git
+.env
+.env.*
+!.env.example
+**/test-results
+**/playwright-report
+brand/logo-reference.png

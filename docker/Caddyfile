@@ -1,0 +1,28 @@
+{
+	email {$ACME_EMAIL}
+}
+
+(common) {
+	encode zstd gzip
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		-Server
+	}
+}
+
+www.beer.krd {
+	redir https://beer.krd{uri} permanent
+}
+
+beer.krd {
+	import common
+	reverse_proxy web:3000
+}
+
+admin.beer.krd {
+	import common
+	request_body {
+		max_size 50MB
+	}
+	reverse_proxy admin:3100
+}

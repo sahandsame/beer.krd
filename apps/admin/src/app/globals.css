@@ -1,0 +1,5 @@
+@import "tailwindcss";
+@import "@beer/ui/styles.css";
+@source "../../../../packages/ui/src";
+
+@custom-variant rtl (&:where([dir="rtl"], [dir="rtl"] *));
