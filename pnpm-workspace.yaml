@@ -12,3 +12,6 @@ allowBuilds:
   "@embedded-postgres/windows-x64": true
   "@embedded-postgres/linux-x64": true
   unrs-resolver: true
+  # Linux-only optional deps that ship prebuilt binaries; their install scripts aren't needed.
+  "@parcel/watcher": false
+  "@swc/core": false

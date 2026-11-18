@@ -1,0 +1,91 @@
+# Coolify deployment (Build Pack: Docker Compose, compose file: /docker-compose.coolify.yml).
+# Coolify builds the images from this repo, routes the domains and handles HTTPS.
+# Postgres runs as a separate Coolify database resource (with scheduled backups):
+# set DATABASE_URL to its internal URL and enable "Connect To Predefined Network".
+# Every ${VAR} below shows up in Coolify's Environment Variables tab. See docs/COOLIFY.md.
+
+services:
+  # Applies migrations + the idempotent seed, then exits. The apps wait for it.
+  migrate:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      target: tools
+      args:
+        APP: web
+    restart: "no"
+    exclude_from_hc: true
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      SEED_OWNER_EMAIL: ${SEED_OWNER_EMAIL}
+      SEED_OWNER_PASSWORD: ${SEED_OWNER_PASSWORD}
+      SEED_OWNER_NAME: ${SEED_OWNER_NAME}
+
+  # Public site: domain https://beer.krd:3000,https://www.beer.krd:3000
+  web:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      target: app
+      args:
+        APP: web
+    restart: unless-stopped
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    environment:
+      PORT: "3000"
+      DATABASE_URL: ${DATABASE_URL}
+      WEB_URL: ${WEB_URL:-https://beer.krd}
+      ADMIN_URL: ${ADMIN_URL:-https://admin.beer.krd}
+      MEDIA_BASE_URL: ${MEDIA_BASE_URL:-https://beer.krd/media}
+      REVALIDATE_SECRET: ${REVALIDATE_SECRET}
+      DISCORD_WEBHOOK_URL: ${DISCORD_WEBHOOK_URL}
+      UPLOADS_DIR: /data/uploads
+      UMAMI_SRC: ${UMAMI_SRC}
+      UMAMI_WEBSITE_ID: ${UMAMI_WEBSITE_ID}
+    volumes:
+      - uploads:/data/uploads
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  # Admin: domain https://admin.beer.krd:3100
+  admin:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      target: app
+      args:
+        APP: admin
+    restart: unless-stopped
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    environment:
+      PORT: "3100"
+      DATABASE_URL: ${DATABASE_URL}
+      WEB_URL: ${WEB_URL:-https://beer.krd}
+      ADMIN_URL: ${ADMIN_URL:-https://admin.beer.krd}
+      BETTER_AUTH_URL: ${ADMIN_URL:-https://admin.beer.krd}
+      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET}
+      MEDIA_BASE_URL: ${MEDIA_BASE_URL:-https://beer.krd/media}
+      REVALIDATE_SECRET: ${REVALIDATE_SECRET}
+      DISCORD_WEBHOOK_URL: ${DISCORD_WEBHOOK_URL}
+      UPLOADS_DIR: /data/uploads
+      # Talk to the web container directly when refreshing its cache.
+      INTERNAL_WEB_URL: http://web:3000
+    volumes:
+      - uploads:/data/uploads
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3100/login"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+volumes:
+  uploads:

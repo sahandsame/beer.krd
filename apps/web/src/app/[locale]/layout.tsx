@@ -82,8 +82,8 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
     sameAs: [settings.facebook, settings.instagram].filter(Boolean),
   };
 
-  const umamiSrc = process.env.NEXT_PUBLIC_UMAMI_SRC;
-  const umamiId = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID;
+  const umamiSrc = process.env.UMAMI_SRC;
+  const umamiId = process.env.UMAMI_WEBSITE_ID;
 
   return (
     <html

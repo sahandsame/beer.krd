@@ -1,4 +1,6 @@
-# Deploying beer.krd to the VPS
+# Deploying beer.krd to a plain Docker VPS
+
+> Using Coolify? Follow [COOLIFY.md](COOLIFY.md) instead. This guide is for a server without Coolify, and its GitHub workflow ("Deploy (plain VPS)") only runs when started by hand.
 
 Everything runs on one server with Docker: **Caddy** (automatic HTTPS) → **web** + **admin** → **Postgres**. Uploads are kept in a Docker volume that both apps share.
 
@@ -66,7 +68,7 @@ Caddy requests the certificates once DNS points at the server.
 1. Push the repo to GitHub. CI (`.github/workflows/ci.yml`) runs lint, typecheck, unit and integration tests, a build, and Playwright.
 2. Add these repository secrets: `VPS_HOST`, `VPS_USER`, `VPS_SSH_KEY` (a deploy key whose public half is in the server's `~/.ssh/authorized_keys`), and optionally `VPS_PORT`.
 3. Create an environment called `production`. You can require approval before each deploy.
-4. On every green CI run on `main`, **Deploy** builds `beer-krd-web`, `beer-krd-admin` and `beer-krd-tools`, pushes them to GHCR, then runs `docker/deploy.sh` on the server.
+4. When you start **Deploy (plain VPS)** from the Actions tab, it builds `beer-krd-web`, `beer-krd-admin` and `beer-krd-tools`, pushes them to GHCR, then runs `docker/deploy.sh` on the server.
 5. If the GHCR packages are private, log the server in once:
 
 ```bash
@@ -141,4 +143,4 @@ Test a restore once after launch.
 
 - Admin → Settings: add the Instagram URL and the Discord webhook, then press **Send test**.
 - Admin → Users: invite the team.
-- Optional: run Umami on the same server for privacy-friendly analytics, then set `NEXT_PUBLIC_UMAMI_SRC` and `NEXT_PUBLIC_UMAMI_WEBSITE_ID`.
+- Optional: run Umami on the same server for privacy-friendly analytics, then set `UMAMI_SRC` and `UMAMI_WEBSITE_ID`.

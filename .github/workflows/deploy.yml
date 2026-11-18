@@ -1,12 +1,10 @@
-name: Deploy
+name: Deploy (plain VPS)
 
-# Builds the three images, pushes them to GitHub Container Registry, then updates the VPS.
-# Repository secrets needed: VPS_HOST, VPS_USER, VPS_SSH_KEY (and optionally VPS_PORT).
+# Manual only. Production is deployed by Coolify (see docs/COOLIFY.md), which builds from
+# docker-compose.coolify.yml on every push to main. This workflow is the fallback for a plain
+# Docker VPS (docs/DEPLOY.md): it builds the three images, pushes them to GHCR, then updates
+# the server over SSH. Secrets needed: VPS_HOST, VPS_USER, VPS_SSH_KEY (optionally VPS_PORT).
 on:
-  workflow_run:
-    workflows: [CI]
-    types: [completed]
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -28,7 +26,7 @@ jobs:
           - { name: admin, app: admin, target: app }
           - { name: tools, app: web, target: tools }
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           ref: ${{ github.event.workflow_run.head_sha || github.sha }}
       - uses: docker/setup-buildx-action@v3

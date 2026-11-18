@@ -103,4 +103,5 @@ Public sign-up is disabled. The owner invites staff from **Users**, which create
 
 ## Deployment
 
-See [docs/DEPLOY.md](docs/DEPLOY.md).
+- **Coolify (production):** see [docs/COOLIFY.md](docs/COOLIFY.md). Coolify builds `docker-compose.coolify.yml` on every push to `main`.
+- **Plain Docker VPS (alternative):** see [docs/DEPLOY.md](docs/DEPLOY.md). It uses Caddy, `docker/compose.yml` and the manual "Deploy (plain VPS)" workflow.
