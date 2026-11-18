@@ -26,7 +26,7 @@ RUN pnpm turbo run build --filter=@beer/${APP}
 # Migrations + seed (drizzle + tsx), run once per deploy by docker compose.
 FROM builder AS tools
 WORKDIR /repo/packages/db
-CMD ["sh", "-c", "node --import tsx src/migrate.ts && node --import tsx src/seed.ts"]
+CMD ["node", "--import", "tsx", "src/deploy.ts"]
 
 FROM ${NODE_IMAGE} AS app
 ARG APP

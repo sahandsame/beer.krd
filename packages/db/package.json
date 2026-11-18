@@ -15,7 +15,8 @@
     "db:migrate": "node --env-file-if-exists=../../.env --import tsx src/migrate.ts",
     "db:seed": "node --env-file-if-exists=../../.env --import tsx src/seed.ts",
     "typecheck": "tsc -p .",
-    "test": "vitest run"
+    "test": "vitest run",
+    "db:deploy": "node --env-file-if-exists=../../.env --import tsx src/deploy.ts"
   },
   "dependencies": {
     "@beer/i18n": "workspace:*",
