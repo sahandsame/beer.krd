@@ -94,7 +94,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
       <body className="min-h-dvh bg-forest text-paper">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:start-3 focus:z-[60] focus:rounded-full focus:bg-lime focus:px-4 focus:py-2 focus:text-ink"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:z-[60] focus:rounded-full focus:bg-lime focus:px-4 focus:py-2 focus:text-ink"
         >
           {t("skip")}
         </a>
@@ -111,6 +111,11 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
           type="application/ld+json"
           // Escape "<" so a value like "</script>" in admin-edited settings cannot close the tag.
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replaceAll("<", LT_ESCAPE) }}
+        />
+        <Script
+          src="https://suite.bfa.zone/widget.js"
+          data-key="wc_3025ed6177a1f1579056"
+          strategy="afterInteractive"
         />
         {umamiSrc && umamiId && (
           <Script src={umamiSrc} data-website-id={umamiId} strategy="afterInteractive" />
