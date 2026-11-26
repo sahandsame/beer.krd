@@ -5,6 +5,7 @@ import { count, eq } from "drizzle-orm";
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { type SidebarItem, SidebarNav } from "@/components/sidebar";
+import { SidebarShell } from "@/components/sidebar-shell";
 import { SignOutButton } from "@/components/sign-out-button";
 import { requireUser } from "@/lib/session";
 
@@ -36,14 +37,17 @@ export default async function PanelLayout({ children }: { children: React.ReactN
 
   return (
     <div className="min-h-dvh md:grid md:grid-cols-[15rem_1fr]">
-      <aside className="flex flex-col gap-6 border-b border-line bg-forest p-4 md:sticky md:top-0 md:h-dvh md:border-e md:border-b-0">
-        <Link href="/" className="flex items-center gap-3 px-2 pt-2" aria-label="Dashboard">
-          <BMark className="h-8 w-auto text-lime" />
-          <span className="flex flex-col gap-1">
-            <Barcode className="h-2 w-24" />
-            <span className="font-mono text-[0.65rem] tracking-[0.3em] text-mist">ADMIN</span>
-          </span>
-        </Link>
+      <SidebarShell
+        brand={
+          <Link href="/" className="flex items-center gap-3 px-2 md:pt-2" aria-label="Dashboard">
+            <BMark className="h-8 w-auto text-lime" />
+            <span className="flex flex-col gap-1">
+              <Barcode className="h-2 w-24" />
+              <span className="font-mono text-[0.65rem] tracking-[0.3em] text-mist">ADMIN</span>
+            </span>
+          </Link>
+        }
+      >
         <nav aria-label="Admin" className="flex-1 overflow-y-auto">
           <SidebarNav items={items} />
         </nav>
@@ -64,7 +68,7 @@ export default async function PanelLayout({ children }: { children: React.ReactN
           </Link>
           <SignOutButton />
         </div>
-      </aside>
+      </SidebarShell>
       <main className="min-w-0 p-5 md:p-10">{children}</main>
     </div>
   );

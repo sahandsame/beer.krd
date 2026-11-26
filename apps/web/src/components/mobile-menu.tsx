@@ -1,6 +1,7 @@
 "use client";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { usePathname } from "@/i18n/navigation";
 import { LanguageSwitcher } from "./language-switcher";
 import { type NavItem, NavLinks } from "./nav-links";
@@ -35,24 +36,28 @@ export function MobileMenu({
       >
         {open ? <X className="size-5" /> : <Menu className="size-5" />}
       </button>
-      {open && (
-        <div
-          id="mobile-menu"
-          role="dialog"
-          aria-modal="true"
-          aria-label={labels.menu}
-          className="fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto border-t border-line/60 bg-forest animate-fade-up"
-        >
-          <div className="container-site flex min-h-full flex-col gap-7 py-7">
-            <NavLinks
-              items={items}
-              className="flex flex-col [&_a]:block [&_a]:w-full [&_a]:border-b [&_a]:border-line [&_a]:py-3 [&_a]:text-2xl"
-              onNavigate={() => setOpen(false)}
-            />
-            <LanguageSwitcher className="self-start" />
-          </div>
-        </div>
-      )}
+      {/* Portal to <body>: the header's backdrop-blur makes it the containing block for
+          position:fixed children, which squeezed this full-screen panel to the header's height. */}
+      {open &&
+        createPortal(
+          <div
+            id="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label={labels.menu}
+            className="fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto border-t border-line/60 bg-forest animate-fade-up"
+          >
+            <div className="container-site flex min-h-full flex-col gap-7 py-7">
+              <NavLinks
+                items={items}
+                className="flex flex-col [&_a]:block [&_a]:w-full [&_a]:border-b [&_a]:border-line [&_a]:py-3 [&_a]:text-2xl"
+                onNavigate={() => setOpen(false)}
+              />
+              <LanguageSwitcher className="self-start" />
+            </div>
+          </div>,
+          document.body,
+        )}
     </div>
   );
 }
