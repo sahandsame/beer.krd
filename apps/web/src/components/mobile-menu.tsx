@@ -38,12 +38,15 @@ export function MobileMenu({
       {open && (
         <div
           id="mobile-menu"
-          className="fixed inset-x-0 top-16 bottom-0 z-40 bg-forest/98 backdrop-blur animate-fade-up"
+          role="dialog"
+          aria-modal="true"
+          aria-label={labels.menu}
+          className="fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto border-t border-line/60 bg-forest animate-fade-up"
         >
-          <div className="container-site flex flex-col gap-8 py-8">
+          <div className="container-site flex min-h-full flex-col gap-7 py-7">
             <NavLinks
               items={items}
-              className="flex flex-col gap-2 text-2xl [&_a]:text-xl"
+              className="flex flex-col [&_a]:block [&_a]:w-full [&_a]:border-b [&_a]:border-line [&_a]:py-3 [&_a]:text-2xl"
               onNavigate={() => setOpen(false)}
             />
             <LanguageSwitcher className="self-start" />
