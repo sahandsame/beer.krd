@@ -60,15 +60,15 @@ const CTA: Slide = {
 export const TAGS =
   "#ئاژانسی_بیر #ماڵپەڕ #هەولێر #سلێمانی #دهۆک #بزنس #کوردستان #Erbil #Kurdistan #WebDesign #BeerAgency";
 
-export const posts: Post[] = [
+const allPosts: Post[] = [
   // ── Week 1: the problem ─────────────────────────────────────────
   {
     n: 1,
-    date: "Tue 1 Dec",
+    date: "Thu 3 Dec",
     slug: "instagram-is-not-a-website",
     format: "Reel",
     size: "tall",
-    ad: "Boost $5 (warm-up)",
+    ad: "Auto-promoted (≈$5 while it's the newest post)",
     about:
       "A customer searches Google, finds the competitor's website, and the business that's only on Instagram loses them.",
     slides: [
@@ -117,11 +117,11 @@ export const posts: Post[] = [
   },
   {
     n: 2,
-    date: "Thu 3 Dec",
+    date: "Fri 4 Dec",
     slug: "5-reasons",
     format: "Carousel",
     size: "feed",
-    ad: "—",
+    ad: "Auto-promoted (≈$5 while it's the newest post)",
     about: "Five reasons a small business needs a website.",
     slides: [
       {
@@ -168,11 +168,11 @@ export const posts: Post[] = [
   },
   {
     n: 3,
-    date: "Sat 5 Dec",
+    date: "Sun 6 Dec",
     slug: "before-after",
     format: "Reel",
     size: "tall",
-    ad: "Boost $5 (warm-up)",
+    ad: "Auto-promoted (≈$5 while it's the newest post)",
     about: "Split screen: the same café with Instagram only, then with a website (demo).",
     slides: [
       {
@@ -221,13 +221,14 @@ export const posts: Post[] = [
     note: "Record the café demo site on a phone. Keep the «DEMO» label visible.",
   },
   {
-    n: 4,
-    date: "Sun 6 Dec",
+    n: 0,
+    date: "Sat 5 Dec · Story only",
     slug: "story-poll",
     format: "Story",
     size: "tall",
-    ad: "—",
-    about: "Story poll. Reply to everyone who answers «No».",
+    ad: "Not promoted (Story only)",
+    about:
+      "Extra Story (not one of the 20 posts, not promoted). Reply to everyone who answers «No».",
     slides: [
       { kind: "poll", title: "بزنسەکەت ماڵپەڕی هەیە؟", options: ["بەڵێ ✅", "نەخێر، دەمەوێت 🙋"] },
     ],
@@ -237,12 +238,12 @@ export const posts: Post[] = [
 
   // ── Week 2: the offer ───────────────────────────────────────────
   {
-    n: 5,
+    n: 4,
     date: "Mon 7 Dec",
     slug: "100-to-5000",
     format: "Carousel",
     size: "feed",
-    ad: "Main creative (B1 + B2)",
+    ad: "Auto-promoted (≈$5 while it's the newest post)",
     about: "All six packages, one slide each, with prices and delivery times.",
     slides: [
       {
@@ -261,12 +262,12 @@ export const posts: Post[] = [
       "من موقع بصفحة واحدة إلى نظام متكامل لشركتك، من 100$ إلى 5,000$. الاستشارة الأولى للمشاريع الكبيرة مجانية.",
   },
   {
-    n: 6,
-    date: "Tue 8 Dec",
+    n: 5,
+    date: "Wed 9 Dec",
     slug: "qr-menu",
     format: "Reel",
     size: "tall",
-    ad: "B1 (small businesses)",
+    ad: "Auto-promoted (≈$5 while it's the newest post)",
     about: "QR menu demo: scan, switch language, order on WhatsApp.",
     slides: [
       {
@@ -317,12 +318,12 @@ export const posts: Post[] = [
     note: "Needs the café QR-menu demo.",
   },
   {
-    n: 7,
+    n: 6,
     date: "Thu 10 Dec",
     slug: "what-100-gets-you",
     format: "Single image",
     size: "feed",
-    ad: "—",
+    ad: "Auto-promoted (≈$5 while it's the newest post)",
     about: "Checklist of the $100 Starter package.",
     slides: [
       {
@@ -343,12 +344,12 @@ export const posts: Post[] = [
     captionAr: "بـ 100$ يصبح لعملك موقع جميل يجدك من خلاله الناس ويتواصلون معك، جاهز خلال 5 أيام.",
   },
   {
-    n: 8,
-    date: "Fri 11 Dec",
+    n: 7,
+    date: "Sat 12 Dec",
     slug: "whatsapp-booking",
     format: "Reel",
     size: "tall",
-    ad: "B1 (small businesses)",
+    ad: "Auto-promoted (≈$5 while it's the newest post)",
     about: "Salon/clinic demo: services, prices, «Book on WhatsApp».",
     slides: [
       {
@@ -392,12 +393,12 @@ export const posts: Post[] = [
     note: "Needs the salon/clinic demo.",
   },
   {
-    n: 9,
-    date: "Sat 12 Dec",
+    n: 8,
+    date: "Sun 13 Dec",
     slug: "control-it-yourself",
     format: "Reel",
     size: "tall",
-    ad: "B2 (bigger businesses)",
+    ad: "Auto-promoted (≈$5 while it's the newest post)",
     about: "The Pro tier: the admin panel. Change a price and it's live instantly.",
     slides: [
       {
@@ -449,11 +450,54 @@ export const posts: Post[] = [
   // ── Week 3: bigger projects, trust and objections ───────────────
   {
     n: 10,
-    date: "Mon 14 Dec",
+    date: "Wed 16 Dec",
+    slug: "your-own-domain",
+    format: "Carousel",
+    size: "feed",
+    ad: "Auto-promoted (≈$5 while it's the newest post)",
+    about: "Your business's own name on the internet: a .com domain instead of an Instagram link.",
+    slides: [
+      {
+        kind: "hook",
+        eyebrow: "دۆمەین",
+        title: "ناوی بزنسەکەت لەسەر ئینتەرنێت",
+        sub: "ناوێکی تایبەت متمانە دروست دەکات.",
+      },
+      {
+        kind: "split",
+        title: "جیاوازییەکە",
+        left: {
+          label: "ئێستا",
+          items: ["instagram.com/…_official2", "ژمارەی تەلەفۆن لە بایۆ", "«نرخ لە دایرێکت»"],
+        },
+        right: {
+          label: "دوای ماڵپەڕ",
+          items: ["yourbusiness.com", "info@yourbusiness.com", "هەموو زانیارییەک لە یەک لینک"],
+        },
+      },
+      {
+        kind: "list",
+        title: "دۆمەینی تایبەت چی پێدەدات؟",
+        items: [
+          "ناوێک کە بە ئاسانی لەبیر دەمێنێت",
+          "ئیمەیڵی پرۆفیشناڵ بە ناوی بزنسەکەت",
+          "متمانەی زیاتر لە کڕیاران",
+          "هی خۆتە، نەک هی پلاتفۆرمێک",
+        ],
+      },
+      CTA,
+    ],
+    caption:
+      "کڕیار «yourbusiness.com» زۆر ئاسانتر لەبیر دەمێنێت وەک ئەکاونتێکی ئینستاگرام. 🌐\nلەگەڵ هەموو ماڵپەڕێک، دۆمەینێک بە ناوی بزنسەکەت بۆت ڕێک دەخەین.",
+    captionAr: "اسم نطاق خاص باسم عملك يبني الثقة ويسهل تذكّره. نجهّزه لك مع كل موقع.",
+  },
+  {
+    n: 9,
+    date: "Tue 15 Dec",
     slug: "process",
     format: "Carousel",
     size: "feed",
-    ad: "—",
+    ad: "Auto-promoted (≈$5 while it's the newest post)",
     about: "The four-step process, from first message to launch.",
     slides: [
       {
@@ -487,11 +531,11 @@ export const posts: Post[] = [
   },
   {
     n: 11,
-    date: "Tue 15 Dec",
+    date: "Fri 18 Dec",
     slug: "online-store",
     format: "Reel",
     size: "tall",
-    ad: "B2 (bigger businesses)",
+    ad: "Auto-promoted (≈$5 while it's the newest post)",
     about: "Online-store demo: products, cart, order, orders dashboard.",
     slides: [
       {
@@ -542,11 +586,11 @@ export const posts: Post[] = [
   },
   {
     n: 12,
-    date: "Wed 16 Dec",
+    date: "Sat 19 Dec",
     slug: "is-it-expensive",
     format: "Reel",
     size: "tall",
-    ad: "B1 (small businesses)",
+    ad: "Auto-promoted (≈$5 while it's the newest post)",
     about: "Objection: are websites expensive? $150 a year is about $0.40 a day.",
     slides: [
       {
@@ -589,11 +633,11 @@ export const posts: Post[] = [
   },
   {
     n: 13,
-    date: "Thu 17 Dec",
+    date: "Mon 21 Dec",
     slug: "faq",
     format: "Carousel",
     size: "feed",
-    ad: "—",
+    ad: "Auto-promoted (≈$5 while it's the newest post)",
     about: "Common questions: domain, languages, editing, support, paying in stages.",
     slides: [
       {
@@ -635,11 +679,11 @@ export const posts: Post[] = [
   },
   {
     n: 14,
-    date: "Sat 19 Dec",
+    date: "Tue 22 Dec",
     slug: "we-built-our-own",
     format: "Reel",
     size: "tall",
-    ad: "B2 (bigger businesses)",
+    ad: "Auto-promoted (≈$5 while it's the newest post)",
     about: "Behind the scenes: beer.krd in Kurdish, Arabic and English, plus the admin panel.",
     slides: [
       {
@@ -684,11 +728,11 @@ export const posts: Post[] = [
   // ── Week 4: systems, urgency, 2027 ──────────────────────────────
   {
     n: 15,
-    date: "Mon 21 Dec",
+    date: "Thu 24 Dec",
     slug: "custom-systems",
     format: "Carousel",
     size: "feed",
-    ad: "B2 (bigger businesses)",
+    ad: "Auto-promoted (≈$5 while it's the newest post)",
     about: "Custom systems: booking, delivery dashboards, staff panels, reports.",
     slides: [
       {
@@ -730,11 +774,11 @@ export const posts: Post[] = [
   },
   {
     n: 16,
-    date: "Tue 22 Dec",
+    date: "Fri 25 Dec",
     slug: "10-places",
     format: "Single image",
     size: "feed",
-    ad: "Year-end (C)",
+    ad: "Auto-promoted (≈$5 while it's the newest post)",
     about: "Only 10 places in December for packages 1–3; free consultation for 4–6.",
     slides: [
       {
@@ -752,11 +796,11 @@ export const posts: Post[] = [
   },
   {
     n: 17,
-    date: "Wed 23 Dec",
+    date: "Sun 27 Dec",
     slug: "case-study",
     format: "Carousel",
     size: "feed",
-    ad: "—",
+    ad: "Auto-promoted (≈$5 while it's the newest post)",
     about: "Case study. Uses beer.krd itself; swap in a December client if one agrees.",
     slides: [
       {
@@ -802,11 +846,11 @@ export const posts: Post[] = [
   },
   {
     n: 18,
-    date: "Sat 26 Dec",
+    date: "Mon 28 Dec",
     slug: "start-2027",
     format: "Reel",
     size: "tall",
-    ad: "Year-end (C)",
+    ad: "Auto-promoted (≈$5 while it's the newest post)",
     about: "Fast montage of all the demos with a 2027 countdown.",
     slides: [
       {
@@ -848,11 +892,11 @@ export const posts: Post[] = [
   },
   {
     n: 19,
-    date: "Mon 28 Dec",
+    date: "Wed 30 Dec",
     slug: "which-package",
     format: "Carousel",
     size: "feed",
-    ad: "—",
+    ad: "Auto-promoted (≈$5 while it's the newest post)",
     about: "Decision guide: which package fits which business.",
     slides: [
       {
@@ -874,12 +918,12 @@ export const posts: Post[] = [
   },
   {
     n: 20,
-    date: "Wed 30 Dec",
+    date: "Thu 31 Dec",
     slug: "last-day",
-    format: "Story",
-    size: "tall",
-    ad: "—",
-    about: "Last day for December prices. Post as a Story and as a feed post.",
+    format: "Single image",
+    size: "feed",
+    ad: "Auto-promoted (≈$5 while it's the newest post)",
+    about: "Last day for December prices. Also share it to your Story.",
     slides: [
       {
         kind: "hook",
@@ -890,6 +934,9 @@ export const posts: Post[] = [
     ],
     caption: "ئەمڕۆ دوایین ڕۆژە. ⏰ ئەگەر بڕیارت داوە، ئێستا نامە بنێرە.",
     captionAr: "اليوم آخر يوم لأسعار ديسمبر. راسلنا الآن.",
-    note: "Add a «Message» sticker in the Story. Replace [X] with the real number before rendering or posting.",
+    note: "Replace [X] with the real number before rendering or posting. When sharing to Stories, add a «Message» sticker.",
   },
 ];
+
+/** Posting order: the 20 feed posts by number, with the extra Story (n = 0) after post 2. */
+export const posts: Post[] = [...allPosts].sort((a, b) => (a.n || 2.5) - (b.n || 2.5));

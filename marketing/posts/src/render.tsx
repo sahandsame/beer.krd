@@ -7,7 +7,7 @@
  * Screenshots of beer.krd for posts 9, 14 and 17 are taken from WEB_URL / ADMIN_URL
  * (the local dev servers by default); if they aren't running, placeholders are used.
  */
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { pick } from "@beer/i18n";
@@ -473,10 +473,12 @@ function gallery(files: Map<number, string[]>) {
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Beer Agency · December posts</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
 <style>body{margin:0;background:#042621;color:#FAFFFE;font-family:Vazirmatn,system-ui,sans-serif;padding:24px 16px}main{max-width:1200px;margin:auto}h1{color:#C6DB62}section{border-top:1px solid rgba(250,255,254,.15);padding:28px 0}h2{font-size:20px;margin:0 0 6px}h2 small{color:#C6DB62;font-weight:400;margin-left:8px}.about{color:#A9C4BD;margin:0 0 6px}.note{color:#F2C46D;margin:0 0 10px}.imgs{display:flex;gap:10px;overflow-x:auto;padding-bottom:8px}.imgs img{height:340px;border-radius:10px;flex:none}pre{white-space:pre-wrap;background:#0a3c36;border-radius:10px;padding:14px;font-family:inherit;line-height:1.7}details{margin-top:8px}li{margin:8px 0}i{color:#A9C4BD}</style></head>
-<body><main><h1>December 2026 · 20 posts</h1><p>Plan: marketing/2026-12-website-campaign.md · Captions: captions.md</p>${cards}</main></body></html>`;
+<body><main><h1>December 2026 · 20 posts, 2 every 3 days</h1><p>Plan: marketing/2026-12-website-campaign.md · Captions: captions.md</p>${cards}</main></body></html>`;
 }
 
 async function main() {
+  // Start clean so renamed or renumbered posts don't leave stale folders behind.
+  rmSync(OUT, { recursive: true, force: true });
   mkdirSync(OUT, { recursive: true });
   const browser = await chromium.launch();
   await takeShots(browser);
