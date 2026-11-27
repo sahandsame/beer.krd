@@ -12,6 +12,12 @@
       "runtimeExecutable": "pnpm",
       "runtimeArgs": ["--filter", "@beer/admin", "dev"],
       "port": 3100
+    },
+    {
+      "name": "posts",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "4600", "--directory", "marketing/posts/out"],
+      "port": 4600
     }
   ]
 }
