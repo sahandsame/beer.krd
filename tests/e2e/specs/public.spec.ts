@@ -91,6 +91,41 @@ test.describe("public site", () => {
     await expect(page.getByLabel("What do you need?")).toHaveValue("branding");
   });
 
+  test("pricing page lists the six packages from $100 to $5,000", async ({ page }) => {
+    await page.goto(`${WEB}/en`);
+    await page
+      .getByRole("navigation", { name: "Main" })
+      .getByRole("link", { name: "Prices" })
+      .click();
+    await expect(page).toHaveURL(`${WEB}/en/pricing`);
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+      "Websites and systems, from $100 to $5,000",
+    );
+    const cards = page.getByRole("article");
+    await expect(cards).toHaveCount(6);
+    for (const [name, price] of [
+      ["Starter", "$100 – $150"],
+      ["Pro", "From $800"],
+      ["Custom System", "From $3,000"],
+    ] as const) {
+      const card = cards.filter({ has: page.getByRole("heading", { name, exact: true }) });
+      await expect(card).toContainText(price);
+    }
+    await expect(cards.filter({ hasText: "Most popular" })).toHaveCount(1);
+    await expect(page.getByText("Pay in stages")).toBeVisible();
+
+    // Arabic version is right-to-left with translated packages.
+    await page.goto(`${WEB}/ar/pricing`);
+    await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
+    await expect(page.getByRole("heading", { name: "متجر إلكتروني" })).toBeVisible();
+  });
+
+  test("home page shows the price range and links to pricing", async ({ page }) => {
+    await page.goto(`${WEB}/en`);
+    await page.getByRole("link", { name: "See all prices" }).click();
+    await expect(page).toHaveURL(`${WEB}/en/pricing`);
+  });
+
   test("SEO: hreflang, sitemap, robots and social image", async ({ page, request }) => {
     await page.goto(`${WEB}/en/about`);
     await expect(page.locator('link[rel="alternate"][hreflang="ckb"]')).toHaveAttribute(

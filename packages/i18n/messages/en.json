@@ -1,8 +1,11 @@
 {
-  "meta": { "siteName": "Beer Agency" },
+  "meta": {
+    "siteName": "Beer Agency"
+  },
   "nav": {
     "home": "Home",
     "services": "Services",
+    "pricing": "Prices",
     "work": "Work",
     "about": "About",
     "contact": "Contact",
@@ -43,6 +46,17 @@
     "otherServices": "Other services",
     "ctaTitle": "Need {service}?",
     "ctaBody": "Tell us about your project and we'll get back to you within 24 hours."
+  },
+  "pricing": {
+    "eyebrow": "Prices",
+    "delivery": "Delivery",
+    "includes": "What's included",
+    "choose": "Get started",
+    "featured": "Most popular",
+    "consult": "Free consultation",
+    "homeEyebrow": "Prices",
+    "homeCta": "See all prices",
+    "fromWebSoftware": "See packages and prices"
   },
   "work": {
     "eyebrow": "Work",

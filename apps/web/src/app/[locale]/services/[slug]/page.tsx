@@ -1,5 +1,5 @@
 import { type Locale, pick } from "@beer/i18n";
-import { ArrowLeft, Check } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -78,6 +78,15 @@ export default async function ServicePage({ params }: PageProps<"/[locale]/servi
                 </li>
               ))}
             </ul>
+            {service.slug === "web-software" && (
+              <Link
+                href="/pricing"
+                className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-lime hover:underline"
+              >
+                {t("pricing.fromWebSoftware")}
+                <ArrowRight className="size-4 rtl:-scale-x-100" aria-hidden="true" />
+              </Link>
+            )}
           </aside>
         )}
       </section>

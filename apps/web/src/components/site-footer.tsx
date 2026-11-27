@@ -62,6 +62,11 @@ export async function SiteFooter({
                 {t("nav.services")}
               </Link>
             </li>
+            <li>
+              <Link className="hover:text-lime" href="/pricing">
+                {t("nav.pricing")}
+              </Link>
+            </li>
             {workEnabled && (
               <li>
                 <Link className="hover:text-lime" href="/work">

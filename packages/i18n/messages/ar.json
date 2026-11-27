@@ -1,8 +1,11 @@
 {
-  "meta": { "siteName": "وكالة بير" },
+  "meta": {
+    "siteName": "وكالة بير"
+  },
   "nav": {
     "home": "الرئيسية",
     "services": "الخدمات",
+    "pricing": "الأسعار",
     "work": "أعمالنا",
     "about": "من نحن",
     "contact": "تواصل معنا",
@@ -43,6 +46,17 @@
     "otherServices": "خدمات أخرى",
     "ctaTitle": "تحتاج إلى {service}؟",
     "ctaBody": "أخبرنا عن مشروعك وسنعود إليك خلال 24 ساعة."
+  },
+  "pricing": {
+    "eyebrow": "الأسعار",
+    "delivery": "مدة التسليم",
+    "includes": "ماذا تتضمّن",
+    "choose": "ابدأ الآن",
+    "featured": "الأكثر طلباً",
+    "consult": "استشارة مجانية",
+    "homeEyebrow": "الأسعار",
+    "homeCta": "شاهد كل الأسعار",
+    "fromWebSoftware": "شاهد الباقات والأسعار"
   },
   "work": {
     "eyebrow": "أعمالنا",

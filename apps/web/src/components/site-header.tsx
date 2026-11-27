@@ -10,6 +10,7 @@ export async function SiteHeader({ workEnabled }: { workEnabled: boolean }) {
   const t = await getTranslations();
   const items = [
     { href: "/services", label: t("nav.services") },
+    { href: "/pricing", label: t("nav.pricing") },
     ...(workEnabled ? [{ href: "/work", label: t("nav.work") }] : []),
     { href: "/about", label: t("nav.about") },
     { href: "/contact", label: t("nav.contact") },

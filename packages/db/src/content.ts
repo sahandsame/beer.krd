@@ -4,7 +4,7 @@ import type { Localized } from "@beer/i18n";
 export type FieldType = "localized" | "localizedText" | "text";
 export type FieldDef = { name: string; label: string; type: FieldType };
 export type ListDef = { name: string; label: string; max: number; fields: readonly FieldDef[] };
-type BlockPage = "Home" | "About" | "Contact" | "SEO";
+type BlockPage = "Home" | "Pricing" | "About" | "Contact" | "SEO";
 type RawBlockDef = {
   key: string;
   label: string;
@@ -75,6 +75,54 @@ export const blockDefs = [
       { name: "body", label: "Body", type: "localizedText" },
       { name: "button", label: "Button", type: "localized" },
     ],
+  },
+  {
+    key: "pricing.intro",
+    label: "Pricing intro",
+    page: "Pricing",
+    fields: [
+      { name: "title", label: "Title", type: "localized" },
+      { name: "lead", label: "Intro text", type: "localizedText" },
+    ],
+  },
+  {
+    key: "pricing.packages",
+    label: "Packages",
+    page: "Pricing",
+    fields: [],
+    list: {
+      name: "items",
+      label: "Packages",
+      max: 8,
+      fields: [
+        { name: "name", label: "Package name", type: "localized" },
+        { name: "price", label: "Price (e.g. $100 – $150, or From $800)", type: "localized" },
+        { name: "delivery", label: "Delivery time", type: "localized" },
+        { name: "summary", label: "Short description", type: "localizedText" },
+        { name: "features", label: "What's included (one per line)", type: "localizedText" },
+        {
+          name: "budget",
+          label: "Contact-form budget: lt500, 500-2000, 2000-5000 or gt5000",
+          type: "text",
+        },
+        { name: "featured", label: 'Highlight this package? Type "yes"', type: "text" },
+      ],
+    },
+  },
+  {
+    key: "pricing.notes",
+    label: "Good to know",
+    page: "Pricing",
+    fields: [{ name: "title", label: "Section title", type: "localized" }],
+    list: {
+      name: "items",
+      label: "Notes",
+      max: 6,
+      fields: [
+        { name: "title", label: "Title", type: "localized" },
+        { name: "body", label: "Text", type: "localizedText" },
+      ],
+    },
   },
   {
     key: "about.story",

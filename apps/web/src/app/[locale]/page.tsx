@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CtaPanel } from "@/components/cta-panel";
 import { Eyebrow } from "@/components/eyebrow";
+import { isFeatured } from "@/components/package-card";
 import { ProjectCard } from "@/components/project-card";
 import { ServiceCard } from "@/components/service-card";
 import { Link } from "@/i18n/navigation";
@@ -16,7 +17,15 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   setRequestLocale(locale);
   const t = await getTranslations("home");
   const [blocks, services, settings] = await Promise.all([
-    getBlocks(["home.hero", "home.intro", "home.process", "home.stats", "home.cta"]),
+    getBlocks([
+      "home.hero",
+      "home.intro",
+      "home.process",
+      "home.stats",
+      "home.cta",
+      "pricing.intro",
+      "pricing.packages",
+    ]),
     getServices(),
     getSettings(),
   ]);
@@ -26,6 +35,9 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const process = blocks["home.process"];
   const stats = blocks["home.stats"].items.filter((s) => s.value);
   const cta = blocks["home.cta"];
+  const pricing = blocks["pricing.intro"];
+  const packages = blocks["pricing.packages"].items;
+  const tp = await getTranslations("pricing");
 
   return (
     <>
@@ -89,6 +101,39 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           ))}
         </ul>
       </section>
+
+      {/* ── Prices teaser ── */}
+      {packages.length > 0 && (
+        <section className="container-site pb-24">
+          <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
+            <div className="flex flex-col gap-4">
+              <Eyebrow>{tp("homeEyebrow")}</Eyebrow>
+              <h2 className="max-w-2xl text-3xl font-semibold md:text-5xl">
+                {pick(pricing.title, locale)}
+              </h2>
+            </div>
+            <Link href="/pricing" className={buttonClasses({ variant: "outline" })}>
+              {tp("homeCta")}
+            </Link>
+          </div>
+          <ul className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
+            {packages.map((p, i) => (
+              <li key={i}>
+                <Link
+                  href="/pricing"
+                  className={`flex h-full flex-col gap-2 rounded-2xl border p-5 transition-colors hover:border-lime/60 ${isFeatured(p) ? "border-lime bg-surface" : "border-line bg-surface/50"}`}
+                >
+                  <span className="text-sm text-mist">{pick(p.name, locale)}</span>
+                  <span className="text-lg font-semibold text-lime" dir="auto">
+                    {pick(p.price, locale)}
+                  </span>
+                  <span className="mt-auto text-xs text-mist/80">{pick(p.delivery, locale)}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       {/* ── Process ── */}
       <section className="border-y border-line bg-surface/40">

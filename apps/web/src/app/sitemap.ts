@@ -11,6 +11,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const paths = [
     "",
     "/services",
+    "/pricing",
     ...services.map((s) => `/services/${s.slug}`),
     ...(settings.workSectionEnabled ? ["/work", ...projects.map((p) => `/work/${p.slug}`)] : []),
     "/about",

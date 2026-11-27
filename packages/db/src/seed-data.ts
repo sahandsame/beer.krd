@@ -193,6 +193,161 @@ export const seedBlocks: BlockDataMap = {
     ),
     button: L("پەیوەندیمان پێوە بکە", "Contact us", "تواصل معنا"),
   },
+  "pricing.intro": {
+    title: L(
+      "ماڵپەڕ و سیستەم، لە $100 تا $5,000",
+      "Websites and systems, from $100 to $5,000",
+      "مواقع وأنظمة، من $100 إلى $5,000",
+    ),
+    lead: L(
+      "پاکێجێک هەڵبژێرە یان پێمان بڵێ چیت دەوێت. بۆ پڕۆژە گەورەکان، یەکەم ڕاوێژ بەخۆڕاییە.",
+      "Pick a package or tell us what you need. For bigger projects, the first consultation is free.",
+      "اختر باقة أو أخبرنا بما تحتاجه. للمشاريع الكبيرة، الاستشارة الأولى مجانية.",
+    ),
+  },
+  "pricing.packages": {
+    items: [
+      {
+        name: L("دەستپێک", "Starter", "البداية"),
+        price: L("$100 – $150", "$100 – $150", "$100 – $150"),
+        delivery: L("٥ ڕۆژ", "5 days", "5 أيام"),
+        summary: L(
+          "ماڵپەڕێکی یەک پەڕەیی بۆ ئەوەی خەڵک بتدۆزنەوە و پەیوەندیت پێوە بکەن.",
+          "A one-page site so people can find and contact you.",
+          "موقع من صفحة واحدة ليجدك الناس ويتواصلوا معك.",
+        ),
+        features: L(
+          "یەک پەڕە، گونجاو بۆ مۆبایل\nدوگمەی واتساپ و پەیوەندی\nشوێنەکەت لەسەر نەخشەی گووگڵ\nبەستەری سۆشیال میدیا\nیەک زمان",
+          "One page, mobile-friendly\nWhatsApp and call buttons\nYour location on Google Maps\nSocial media links\nOne language",
+          "صفحة واحدة متوافقة مع الجوال\nأزرار واتساب واتصال\nموقعك على خرائط جوجل\nروابط وسائل التواصل\nلغة واحدة",
+        ),
+        budget: "lt500",
+        featured: "",
+      },
+      {
+        name: L("بزنس", "Business", "الأعمال"),
+        price: L("$250 – $500", "$250 – $500", "$250 – $500"),
+        delivery: L("٧–١٠ ڕۆژ", "7–10 days", "7–10 أيام"),
+        summary: L(
+          "ماڵپەڕێکی بچووکی کۆمپانیا بۆ ناساندنی کار و خزمەتگوزارییەکانت.",
+          "A small company website that presents your work and services.",
+          "موقع صغير لشركتك يعرض أعمالك وخدماتك.",
+        ),
+        features: L(
+          "تا ٥ پەڕە\nکوردی لەگەڵ عەرەبی یان ئینگلیزی\nفۆرمی پەیوەندی\nڕێکخستنی گووگڵ\nدوگمەی واتساپ",
+          "Up to 5 pages\nKurdish plus Arabic or English\nContact form\nGoogle setup\nWhatsApp button",
+          "حتى 5 صفحات\nالكردية مع العربية أو الإنجليزية\nنموذج تواصل\nإعداد جوجل\nزر واتساب",
+        ),
+        budget: "lt500",
+        featured: "",
+      },
+      {
+        name: L("مینیو / کەتەلۆگ", "Menu / Catalog", "قائمة / كتالوج"),
+        price: L("$300 – $600", "$300 – $600", "$300 – $600"),
+        delivery: L("٧–١٠ ڕۆژ", "7–10 days", "7–10 أيام"),
+        summary: L(
+          "مینیوی QR یان کەتەلۆگی بەرهەم کە خۆت نوێی دەکەیتەوە.",
+          "A QR menu or product catalog you update yourself.",
+          "قائمة QR أو كتالوج منتجات تحدّثه بنفسك.",
+        ),
+        features: L(
+          "مینیوی QR یان کەتەلۆگ\nخۆت نرخ و بەرهەمەکان دەگۆڕیت\nداواکردن بە واتساپ\nتا ٣ زمان\nگونجاو بۆ مۆبایل",
+          "QR menu or catalog\nEdit prices and products yourself\nOrders via WhatsApp\nUp to 3 languages\nMobile-friendly",
+          "قائمة QR أو كتالوج\nتعدّل الأسعار والمنتجات بنفسك\nالطلب عبر واتساب\nحتى 3 لغات\nمتوافق مع الجوال",
+        ),
+        budget: "lt500",
+        featured: "",
+      },
+      {
+        name: L("پرۆ", "Pro", "احترافي"),
+        price: L("لە $800ـەوە", "From $800", "من $800"),
+        delivery: L("٢–٤ هەفتە", "2–4 weeks", "2–4 أسابيع"),
+        summary: L(
+          "ماڵپەڕێکی تەواوی کۆمپانیا لەگەڵ پانێڵی بەڕێوەبردن، هەموو شتێک خۆت دەگۆڕیت.",
+          "A complete company website with an admin panel, so you can change everything yourself.",
+          "موقع متكامل لشركتك مع لوحة تحكم لتعدّل كل شيء بنفسك.",
+        ),
+        features: L(
+          "تا ١٥ پەڕە\nکوردی، عەرەبی و ئینگلیزی\nپانێڵی بەڕێوەبردن\nسندوقی داواکارییەکان\nپۆرتفۆلیۆ یان بلۆگ\nڕێکخستنی SEO",
+          "Up to 15 pages\nKurdish, Arabic and English\nAdmin panel\nLeads inbox\nPortfolio or blog\nSEO setup",
+          "حتى 15 صفحة\nالكردية والعربية والإنجليزية\nلوحة تحكم\nصندوق الطلبات\nمعرض أعمال أو مدونة\nإعداد SEO",
+        ),
+        budget: "500-2000",
+        featured: "yes",
+      },
+      {
+        name: L("فرۆشگای ئۆنلاین", "Online Store", "متجر إلكتروني"),
+        price: L("لە $1,500ـەوە", "From $1,500", "من $1,500"),
+        delivery: L("٤–٦ هەفتە", "4–6 weeks", "4–6 أسابيع"),
+        summary: L(
+          "فرۆشگایەکی ئۆنلاینی تەواو بۆ فرۆشتنی بەرهەمەکانت، بێ کۆمیشن.",
+          "A full online store to sell your products, with no commission.",
+          "متجر إلكتروني متكامل لبيع منتجاتك، بدون عمولة.",
+        ),
+        features: L(
+          "بەرهەم و پۆلەکان\nسەبەتەی کڕین\nداشبۆردی داواکارییەکان\nناوچەکانی گەیاندن\nپارەدان لە کاتی گەیاندن\nپارەدانی ئۆنلاین (ئەگەر بەردەست بێت)",
+          "Products and categories\nShopping cart\nOrders dashboard\nDelivery zones\nCash on delivery\nOnline payment (where available)",
+          "المنتجات والفئات\nسلة التسوق\nلوحة الطلبات\nمناطق التوصيل\nالدفع عند الاستلام\nالدفع الإلكتروني (حيث يتوفر)",
+        ),
+        budget: "2000-5000",
+        featured: "",
+      },
+      {
+        name: L("سیستەمی تایبەت", "Custom System", "نظام مخصّص"),
+        price: L("لە $3,000ـەوە", "From $3,000", "من $3,000"),
+        delivery: L("٦–١٠ هەفتە", "6–10 weeks", "6–10 أسابيع"),
+        summary: L(
+          "سیستەمێک کە بە تایبەتی بۆ شێوازی کارکردنی کۆمپانیاکەت دروست دەکرێت.",
+          "A system built around the way your company works.",
+          "نظام يُبنى حول طريقة عمل شركتك.",
+        ),
+        features: L(
+          "سیستەمی نۆرەگرتن\nداشبۆردی کارمەند و لقەکان\nڕاپۆرت و ئامار\nپۆرتاڵی کڕیاران\nبەستنەوە بە سیستەمەکانی تر",
+          "Booking systems\nStaff and branch dashboards\nReports and analytics\nCustomer portals\nIntegrations with other systems",
+          "أنظمة الحجز\nلوحات للموظفين والفروع\nتقارير وإحصائيات\nبوابات للعملاء\nربط مع أنظمة أخرى",
+        ),
+        budget: "2000-5000",
+        featured: "",
+      },
+    ],
+  },
+  "pricing.notes": {
+    title: L("باشە بزانیت", "Good to know", "معلومات مهمة"),
+    items: [
+      {
+        title: L("دۆمەین و هۆستینگ", "Domain and hosting", "النطاق والاستضافة"),
+        body: L(
+          "پێش دەستپێکردن پێت دەڵێین چی لەناو نرخەکەدایە و نوێکردنەوەی ساڵانە چەندە. هیچ پارەیەکی شاراوە نییە.",
+          "Before we start, we tell you exactly what's included and what the yearly renewal costs. No hidden fees.",
+          "قبل البدء نوضّح لك ما يشمله السعر وتكلفة التجديد السنوي. لا رسوم مخفية.",
+        ),
+      },
+      {
+        title: L("پارەدان بە قۆناغ", "Pay in stages", "الدفع على مراحل"),
+        body: L(
+          "بۆ پرۆ، فرۆشگای ئۆنلاین و سیستەمی تایبەت: ٤٠٪ لە دەستپێک، ٤٠٪ کاتی پیشاندانی یەکەم وەشان، ٢٠٪ کاتی بڵاوکردنەوە.",
+          "For Pro, Online Store and Custom System: 40% to start, 40% at the first preview, 20% at launch.",
+          "لباقات الاحترافي والمتجر والنظام المخصّص: 40% عند البدء، 40% عند عرض النسخة الأولى، 20% عند الإطلاق.",
+        ),
+      },
+      {
+        title: L("پشتگیری دوای بڵاوکردنەوە", "Support after launch", "الدعم بعد الإطلاق"),
+        body: L(
+          "پلانی پشتگیری مانگانە یان ساڵانە ماڵپەڕەکەت پارێزراو و نوێ دەهێڵێتەوە.",
+          "Monthly or yearly support plans keep your site secure and up to date.",
+          "خطط دعم شهرية أو سنوية تحافظ على موقعك آمناً ومحدّثاً.",
+        ),
+      },
+      {
+        title: L("ڕاوێژی بەخۆڕایی", "Free consultation", "استشارة مجانية"),
+        body: L(
+          "دڵنیا نیت کام پاکێج گونجاوە؟ نامەمان بۆ بنێرە، بەخۆڕایی ڕێنماییت دەکەین.",
+          "Not sure which package fits? Message us and we'll recommend one, for free.",
+          "لست متأكداً أي باقة تناسبك؟ راسلنا وسنرشدك مجاناً.",
+        ),
+      },
+    ],
+  },
   "about.story": {
     title: L("چیرۆکی بیر", "The Beer story", "قصة بير"),
     body: L(

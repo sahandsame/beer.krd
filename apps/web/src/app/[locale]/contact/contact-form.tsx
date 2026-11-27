@@ -8,7 +8,13 @@ import { useActionState, useEffect, useRef, useState } from "react";
 import { Link } from "@/i18n/navigation";
 import { type ContactState, submitContact } from "./actions";
 
-type Props = { services: { slug: string; name: string }[]; defaultService?: string };
+type Props = {
+  services: { slug: string; name: string }[];
+  defaultService?: string;
+  defaultBudget?: string;
+  /** e.g. "4 (Pro)" when the visitor came from a package on the pricing page */
+  packageNote?: string;
+};
 
 /** Remounting the inner form (new key) resets the action state for "send another message". */
 export function ContactForm(props: Props) {
@@ -16,7 +22,13 @@ export function ContactForm(props: Props) {
   return <ContactFormInner key={round} {...props} onReset={() => setRound((r) => r + 1)} />;
 }
 
-function ContactFormInner({ services, defaultService, onReset }: Props & { onReset: () => void }) {
+function ContactFormInner({
+  services,
+  defaultService,
+  defaultBudget,
+  packageNote,
+  onReset,
+}: Props & { onReset: () => void }) {
   const t = useTranslations("contact");
   const locale = useLocale();
   const [state, action, pending] = useActionState<ContactState, FormData>(submitContact, {
@@ -60,7 +72,11 @@ function ContactFormInner({ services, defaultService, onReset }: Props & { onRes
   return (
     <form ref={formRef} action={action} noValidate className="flex flex-col gap-5">
       <input type="hidden" name="locale" value={locale} />
-      <input type="hidden" name="sourcePage" value={`/${locale}/contact`} />
+      <input
+        type="hidden"
+        name="sourcePage"
+        value={`/${locale}/contact${packageNote ? ` · package ${packageNote}` : ""}`}
+      />
       {/* Honeypot */}
       <div aria-hidden="true" className="absolute -start-[9999px] h-0 w-0 overflow-hidden">
         <label>
@@ -137,7 +153,7 @@ function ContactFormInner({ services, defaultService, onReset }: Props & { onRes
           </Select>
         </Field>
         <Field id="budget" label={t("form.budget")}>
-          <Select id="budget" name="budget" defaultValue={values.budget ?? ""}>
+          <Select id="budget" name="budget" defaultValue={values.budget ?? defaultBudget ?? ""}>
             <option value="">{t("form.budgetPlaceholder")}</option>
             {budgetRanges.map((b) => (
               <option key={b} value={b}>

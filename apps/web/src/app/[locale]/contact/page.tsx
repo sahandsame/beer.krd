@@ -1,4 +1,5 @@
 import { type Locale, pick } from "@beer/i18n";
+import { budgetRanges } from "@beer/validators";
 import { MapPin, Phone } from "lucide-react";
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -28,14 +29,24 @@ export default async function ContactPage({
   const { locale: l } = await params;
   const locale = l as Locale;
   setRequestLocale(locale);
-  const { service } = (await searchParams) as { service?: string };
+  const {
+    service,
+    budget,
+    package: pkgParam,
+  } = (await searchParams) as { service?: string; budget?: string; package?: string };
   const t = await getTranslations();
   const [blocks, services, settings] = await Promise.all([
-    getBlocks(["contact.intro"]),
+    getBlocks(["contact.intro", "pricing.packages"]),
     getServices(),
     getSettings(),
   ]);
   const intro = blocks["contact.intro"];
+  // Arriving from a package on /pricing: remember which one (shown on the lead in the admin).
+  const pkgIndex = Number(pkgParam) - 1;
+  const chosen = Number.isInteger(pkgIndex)
+    ? blocks["pricing.packages"].items[pkgIndex]
+    : undefined;
+  const packageNote = chosen ? `${pkgIndex + 1} (${pick(chosen.name, "en")})` : undefined;
   const links = contactLinks(settings);
 
   const channels = [
@@ -95,6 +106,10 @@ export default async function ContactPage({
           <ContactForm
             services={services.map((s) => ({ slug: s.slug, name: pick(s.name, locale) }))}
             defaultService={services.some((s) => s.slug === service) ? service : undefined}
+            defaultBudget={
+              (budgetRanges as readonly string[]).includes(budget ?? "") ? budget : undefined
+            }
+            packageNote={packageNote}
           />
         </div>
 

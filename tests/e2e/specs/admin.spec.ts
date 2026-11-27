@@ -33,12 +33,22 @@ test("wrong password is rejected", async ({ page }) => {
   await expect(page).toHaveURL(/\/login/);
 });
 
-test("a contact form lead shows up in the admin inbox and can be worked", async ({ page }) => {
-  await page.goto(`${WEB}/ckb/contact`);
+test("a lead from a pricing package shows up in the admin inbox and can be worked", async ({
+  page,
+}) => {
+  // Start on the Kurdish pricing page and pick the highlighted "Pro" package.
+  await page.goto(`${WEB}/ckb/pricing`);
+  await page
+    .getByRole("article")
+    .filter({ hasText: "باوترین" })
+    .getByRole("link", { name: "دەست پێبکە" })
+    .click();
+  await expect(page).toHaveURL(/\/ckb\/contact\?service=web-software&package=4&budget=500-2000$/);
+  // Service and budget arrive preselected.
+  await expect(page.getByLabel("پێویستت بە چییە؟")).toHaveValue("web-software");
+  await expect(page.getByLabel("بودجە")).toHaveValue("500-2000");
   await page.getByLabel("ناوت").fill("ئارامی تاقیکردنەوە");
   await page.getByLabel("ژمارەی تەلەفۆن").fill("0773 418 7963");
-  await page.getByLabel("پێویستت بە چییە؟").selectOption("web-software");
-  await page.getByLabel("بودجە").selectOption("500-2000");
   await page.getByLabel("باسی پڕۆژەکەت بکە").fill("ماڵپەڕێکی نوێمان دەوێت بۆ چێشتخانەکەمان.");
   await page.getByRole("button", { name: "ناردنی نامە" }).click();
   await expect(page.getByRole("status")).toContainText("سوپاس!");
@@ -53,6 +63,7 @@ test("a contact form lead shows up in the admin inbox and can be worked", async 
   await page.getByRole("link", { name: "ئارامی تاقیکردنەوە" }).click();
   await expect(page.getByText("Websites, Systems & Software")).toBeVisible();
   await expect(page.getByText("$500 – $2,000")).toBeVisible();
+  await expect(page.getByText("package 4 (Pro)")).toBeVisible();
 
   await page.getByLabel("Status").selectOption("contacted");
   await page.getByRole("button", { name: "Save" }).click();
